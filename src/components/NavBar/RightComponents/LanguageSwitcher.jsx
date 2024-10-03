@@ -1,6 +1,6 @@
 // LanguageSwitcher.js
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const StyledSwitcher = styled.span`
   border: 1px solid white;

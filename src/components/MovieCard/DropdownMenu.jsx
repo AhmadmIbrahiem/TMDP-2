@@ -1,9 +1,8 @@
 import React from "react";
-import styled from "styled-components";
-// Downloaded a react library to call the Icons needed
+import styled from "@emotion/styled";
 import { FaListUl, FaHeart, FaBookmark, FaStar } from "react-icons/fa";
 
-// Wrapper to make sure the dropdown is positioned and infront of the mavie card
+// Wrapper to make sure the dropdown is positioned and in front of the movie card
 const DropdownWrapper = styled.div`
   position: absolute;
   top: 30px;

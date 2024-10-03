@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import GenresFilter from "./GenresFilter";
 import ReleaseDatesFilter from "./ReleaseDatesFilter";

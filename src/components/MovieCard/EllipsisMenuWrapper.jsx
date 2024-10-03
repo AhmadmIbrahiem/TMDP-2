@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import EllipsisButton from "./EllipsisButton";
 import DropdownMenu from "./DropdownMenu";
 
-// Styled component to position the ellipsis menu
+// Styled component to position the ellipsis menu using Emotion
 const EllipsisWrapper = styled.div`
   position: absolute;
   right: 10px;

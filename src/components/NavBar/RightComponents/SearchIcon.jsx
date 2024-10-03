@@ -1,7 +1,7 @@
 // SearchIcon.js
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const StyledSearchIcon = styled(FaSearch)`
   cursor: pointer;

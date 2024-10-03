@@ -1,10 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-// Downloaded this library to give me a circular progress bar which allowed me to create a visually appealing display
+import styled from "@emotion/styled";
 import "react-circular-progressbar/dist/styles.css";
 
-// Circular rating component
+// Circular rating component using Emotion
 const RatingWrapper = styled.div`
   background-color: #081c22;
   border-radius: 50%;

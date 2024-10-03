@@ -1,7 +1,7 @@
 // PlusIcon.js
 import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Tooltip from "./Tooltip"; // Assuming Tooltip is in a parent folder
 
 const StyledPlusIcon = styled(FaPlus)`

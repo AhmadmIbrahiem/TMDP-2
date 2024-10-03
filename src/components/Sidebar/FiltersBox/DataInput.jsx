@@ -1,7 +1,7 @@
 // DateInput.jsx
 import React from "react";
 import { FaCalendarAlt } from "react-icons/fa";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import CustomDatePicker from "./CustomDatePicker ";
 
 const DateInputWrapper = styled.div`

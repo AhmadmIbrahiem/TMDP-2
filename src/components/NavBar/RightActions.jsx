@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import PlusIcon from "./RightComponents/PlusIcon";
 import SearchIcon from "./RightComponents/SearchIcon";
 import LanguageSwitcher from "./RightComponents/LanguageSwitcher";

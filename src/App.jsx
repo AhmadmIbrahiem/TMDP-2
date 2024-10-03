@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "./components/NavBar/NavBar";
 import MovieList from "./components/MovieList/MovieList";
 import Sidebar from "./components/Sidebar/Sidebar";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Footer from "./components/Footer/FooterWrapper";
 import "./components/CSS/App.css"; // Global CSS for the app
 

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import MovieCard from "../MovieCard/MovieCard";
 
 // Controlling the grid of the movies apppearing at each row depending on the screen size

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 // Wrapper to standrize the Three boxes (Sort - Where to Watch - Filters) so they all have the same styling
 const BoxWrapper = styled.div`

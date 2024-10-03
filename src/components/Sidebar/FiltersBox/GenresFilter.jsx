@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 // Wrapper for genre buttons in a grid layout
 const GenresWrapper = styled.div`

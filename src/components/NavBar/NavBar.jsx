@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import LeftComponents from "./LeftComponents";
 import RightActions from "./RightActions";
 import Logo from "./Logo";

@@ -1,0 +1,36 @@
+{
+  "Jordan": [
+    {
+      "name": "Netflix",
+      "logo": "https://media.themoviedb.org/t/p/original/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+    },
+    {
+      "name": "Amazon Prime Video",
+      "logo": "https://media.themoviedb.org/t/p/original/dQeAar5H991VYporEjUspolDarG.jpg"
+    }
+  ],
+  "United States": [
+    {
+      "name": "Netflix",
+      "logo": "https://media.themoviedb.org/t/p/original/pbpMk2JmcoNnQwx5JGpXngfoWtp.jpg"
+    },
+    {
+      "name": "Amazon Prime Video",
+      "logo": "https://media.themoviedb.org/t/p/original/dQeAar5H991VYporEjUspolDarG.jpg"
+    },
+    {
+      "name": "FlixOlé",
+      "logo": "https://media.themoviedb.org/t/p/original/ozMgkAAoi6aDI5ce8KKA2k8TGvB.jpg"
+    }
+  ],
+  "Italy": [
+    {
+      "name": "Disney+",
+      "logo": "https://media.themoviedb.org/t/p/original/example-logo-disney.jpg"
+    },
+    {
+      "name": "Apple TV Plus",
+      "logo": "https://media.themoviedb.org/t/p/original/example-logo-appletv.jpg"
+    }
+  ]
+}

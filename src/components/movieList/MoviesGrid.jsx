@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCard from "./MovieCard";
 
 /**
  * Styled grid layout for displaying movies.

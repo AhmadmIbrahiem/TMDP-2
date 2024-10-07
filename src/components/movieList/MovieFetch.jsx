@@ -1,22 +1,23 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import MoviesContainer from "./MoviesContainer";
 import MoviesGrid from "./MoviesGrid";
 import LoadMoreButton from "./LoadMoreButton";
+import useInfiniteScroll from "./InfiniteScroll"; // Import the hook
 
 /**
- * MovieList component to fetch, display, and paginate a list of movies.
- * Handles sorting, filtering, and infinite scrolling.
+ * MovieList component fetches and displays a list of movies based on sorting, filtering, and search criteria.
+ * It also supports infinite scrolling and manual loading of more movies.
  *
  * @component
  * @param {Object} props - Component props.
- * @param {string} props.sortBy - The sort option for the movies (e.g., popularity).
- * @param {Array<number>} props.selectedProviders - Array of provider IDs to filter movies by provider.
- * @param {Array<number>} props.selectedGenres - Array of genre IDs to filter movies by genre.
- * @param {Object} props.releaseDates - Date range to filter movies by release date.
- * @param {string} props.releaseDates.from - Start date for filtering.
- * @param {string} props.releaseDates.to - End date for filtering.
- * @param {string} props.searchQuery - Search query to filter movies by title.
- * @returns {JSX.Element} Movie list with infinite scrolling and load more button.
+ * @param {string} props.sortBy - The sorting option for fetching movies (e.g., popularity, release date).
+ * @param {Array<number>} props.selectedProviders - The IDs of selected streaming providers for filtering.
+ * @param {Array<number>} props.selectedGenres - The IDs of selected genres for filtering.
+ * @param {Object} props.releaseDates - The selected release date range for filtering movies.
+ * @param {string} props.releaseDates.from - The start of the release date range (YYYY-MM-DD).
+ * @param {string} props.releaseDates.to - The end of the release date range (YYYY-MM-DD).
+ * @param {string} props.searchQuery - The search term for querying movies by title.
+ * @returns {JSX.Element} A list of movies with infinite scrolling support.
  */
 const MovieList = ({
   sortBy,
@@ -32,15 +33,17 @@ const MovieList = ({
   const [infiniteScrollEnabled, setInfiniteScrollEnabled] = useState(false); // State to control infinite scroll
 
   /**
-   * Fetches movies from the TMDB API based on filters and search query.
+   * Fetches movies from the API based on the given filters, genres, dates, and query.
    *
-   * @param {number} pageNum - The page number to fetch.
-   * @param {string} sortOption - The sort option to use (e.g., popularity.asc).
-   * @param {Array<number>} [providerIds=[]] - Array of provider IDs for filtering.
-   * @param {Array<number>} [genreIds=[]] - Array of genre IDs for filtering.
-   * @param {string} [fromDate=""] - Start date for filtering by release date.
-   * @param {string} [toDate=""] - End date for filtering by release date.
-   * @param {string} [query=""] - Search query for movie title.
+   * @async
+   * @param {number} pageNum - The current page number for pagination.
+   * @param {string} sortOption - The sorting option for fetching movies (e.g., popularity.desc).
+   * @param {Array<number>} [providerIds=[]] - The selected provider IDs for filtering.
+   * @param {Array<number>} [genreIds=[]] - The selected genre IDs for filtering.
+   * @param {string} [fromDate=""] - The start date of the release date range (YYYY-MM-DD).
+   * @param {string} [toDate=""] - The end date of the release date range (YYYY-MM-DD).
+   * @param {string} [query=""] - The search term for fetching movies by title.
+   * @returns {Promise<void>} Fetches and appends movies to the state.
    */
   const fetchMovies = async (
     pageNum,
@@ -87,6 +90,7 @@ const MovieList = ({
     }
   };
 
+  // Effect to fetch movies when any filter changes (sortBy, providers, genres, releaseDates, or searchQuery)
   useEffect(() => {
     setMovies([]);
     fetchMovies(
@@ -101,29 +105,17 @@ const MovieList = ({
     setPage(1);
   }, [sortBy, selectedProviders, selectedGenres, releaseDates, searchQuery]);
 
+  /**
+   * Loads more movies when called (for pagination).
+   */
   const loadMoreMovies = () => {
     setPage((prevPage) => prevPage + 1);
-    setInfiniteScrollEnabled(true);
   };
 
-  const handleScroll = useCallback(() => {
-    if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 &&
-      hasMore &&
-      !loading &&
-      infiniteScrollEnabled
-    ) {
-      setPage((prevPage) => prevPage + 1);
-    }
-  }, [hasMore, loading, infiniteScrollEnabled]);
+  // Infinite scroll hook to automatically load more movies when scrolling near the bottom
+  useInfiniteScroll(hasMore, loading, infiniteScrollEnabled, loadMoreMovies);
 
-  useEffect(() => {
-    if (infiniteScrollEnabled) {
-      window.addEventListener("scroll", handleScroll);
-    }
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll, infiniteScrollEnabled]);
-
+  // Effect to fetch more movies when the page number changes
   useEffect(() => {
     if (page > 1) {
       fetchMovies(
@@ -149,7 +141,9 @@ const MovieList = ({
     <MoviesContainer>
       <MoviesGrid movies={movies} />
       {loading && <p style={{ textAlign: "center" }}>Loading...</p>}
-      {!infiniteScrollEnabled && <LoadMoreButton onClick={loadMoreMovies} />}
+      {!infiniteScrollEnabled && (
+        <LoadMoreButton onClick={() => setInfiniteScrollEnabled(true)} />
+      )}
     </MoviesContainer>
   );
 };

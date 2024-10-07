@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Navbar from "./components/NavBar/NavBar";
-import MovieList from "./components/MovieList/MovieFetch";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Navbar from "./components/navBar/NavBar";
+import MovieList from "./components/movieList/MovieFetch";
+import Sidebar from "./components/sidebar/Sidebar";
 import styled from "@emotion/styled";
-import Footer from "./components/Footer/FooterWrapper";
-import "./components/CSS/App.css"; // Global CSS for the app
+import Footer from "./components/footer/FooterWrapper";
+import "./global.css"; // Global CSS for the app
 
 /**
  * Wrapper for the entire app, applying a global font style.
@@ -48,6 +48,15 @@ function App() {
   const [releaseDates, setReleaseDates] = useState({ from: "", to: "" });
 
   /**
+   * Handler function for updating the sorting option.
+   *
+   * @param {string} sortOption - The new sort option.
+   */
+  const handleSort = (sortOption) => {
+    setSortBy(sortOption);
+  };
+
+  /**
    * Handler function for searching movies by selected genres.
    *
    * @param {Array<number>} genres - The selected genre IDs.
@@ -75,7 +84,7 @@ function App() {
       <Container>
         {/* Sidebar for sorting, filtering by genres and release dates */}
         <Sidebar
-          setSortBy={setSortBy} // Pass function to update sort option
+          setSortBy={handleSort} // Pass function to handle sorting
           onSearch={handleSearch} // Pass function to handle search
           onDateSelect={handleDateSelect} // Pass function to handle date selection
         />

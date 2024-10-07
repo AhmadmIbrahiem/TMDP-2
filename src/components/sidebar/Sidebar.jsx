@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import SortBox from "./SortBox";
-import WhereToWatch from "./WhereToWatchBox/WhereToWatch";
-import FiltersBox from "./FiltersBox/Filters";
+import WhereToWatch from "./whereToWatchBox/WhereToWatch";
+import FiltersBox from "./filtersBox/Filters";
 import SearchButton from "./SearchButton";
 
 /**

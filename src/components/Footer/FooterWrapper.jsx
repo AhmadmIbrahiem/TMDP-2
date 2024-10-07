@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 import FooterNav from "./FooterNav";
 import FooterBottom from "./FooterBottom";
 
-// Wrapper for footer
+/**
+ * Wrapper for the entire footer component.
+ */
 const FooterWrapper = styled.footer`
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -11,6 +13,11 @@ const FooterWrapper = styled.footer`
   text-align: left;
 `;
 
+/**
+ * Footer component containing navigation and bottom build info.
+ *
+ * @returns {JSX.Element} JSX for the full footer.
+ */
 const Footer = () => {
   return (
     <FooterWrapper>

@@ -1,7 +1,9 @@
-// LanguageSwitcher.js
 import React from "react";
 import styled from "@emotion/styled";
 
+/**
+ * Styled component for the language switcher.
+ */
 const StyledSwitcher = styled.span`
   border: 1px solid white;
   padding: 5px 10px;
@@ -21,6 +23,12 @@ const StyledSwitcher = styled.span`
   }
 `;
 
+/**
+ * LanguageSwitcher component to display and toggle the current language.
+ *
+ * @component
+ * @returns {JSX.Element} A span element that acts as a language switcher.
+ */
 const LanguageSwitcher = () => {
   return <StyledSwitcher>EN</StyledSwitcher>;
 };

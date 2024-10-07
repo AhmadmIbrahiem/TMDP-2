@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "@emotion/styled";
-import PlusIcon from "./RightComponents/PlusIcon";
-import SearchIcon from "./RightComponents/SearchIcon";
-import LanguageSwitcher from "./RightComponents/LanguageSwitcher";
-import LoginButton from "./RightComponents/LoginButton";
-import JoinButton from "./RightComponents/JoinButton";
+import PlusIcon from "./RightNavBar/PlusIcon";
+import SearchIcon from "./RightNavBar/SearchIcon";
+import LanguageSwitcher from "./RightNavBar/LanguageSwitcher";
+import LoginButton from "./RightNavBar/LoginButton";
+import JoinButton from "./RightNavBar/JoinButton";
 
+/**
+ * Wrapper for the right-side action buttons.
+ */
 const RightActionsWrapper = styled.div`
   align-items: center;
   display: flex;
@@ -19,6 +22,12 @@ const RightActionsWrapper = styled.div`
   }
 `;
 
+/**
+ * RightActions component that displays various action buttons such as login, join, search, and more.
+ *
+ * @component
+ * @returns {JSX.Element} The right-side action buttons of the navigation bar.
+ */
 const RightActions = () => {
   return (
     <RightActionsWrapper>

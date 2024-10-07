@@ -2,7 +2,10 @@ import React from "react";
 import styled from "@emotion/styled";
 import Logo from "./Logo";
 
-// Join the community section
+/**
+ * Section for allowing users to join the community.
+ * Includes a logo and a call-to-action link.
+ */
 const JoinWrapper = styled.div`
   align-items: center;
   display: flex;
@@ -23,6 +26,11 @@ const JoinWrapper = styled.div`
   }
 `;
 
+/**
+ * Component rendering a "Join the Community" section with a logo and link.
+ *
+ * @returns {JSX.Element} JSX for the join section.
+ */
 const JoinSection = () => {
   return (
     <JoinWrapper>

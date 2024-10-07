@@ -5,7 +5,9 @@ import RightActions from "./RightActions";
 import Logo from "./Logo";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-// Styled header component, with hidden state based on scroll
+/**
+ * Styled header component with dynamic visibility based on scroll.
+ */
 const Header = styled.header`
   align-items: center;
   background-color: var(--bg-color);
@@ -14,14 +16,15 @@ const Header = styled.header`
   justify-content: space-between;
   padding: 10px 20px;
   position: fixed;
-  top: ${({ isHidden }) =>
-    isHidden ? "-80px" : "0"}; // Hide header when scrolling down
+  top: ${({ isHidden }) => (isHidden ? "-80px" : "0")};
   transition: top 0.3s;
   width: 100%;
   z-index: 100;
 `;
 
-// Container for the navbar content
+/**
+ * Navbar container that holds the left and right sections of the navigation bar.
+ */
 const NavbarContainer = styled.div`
   align-items: center;
   display: flex;
@@ -31,14 +34,16 @@ const NavbarContainer = styled.div`
   width: 100%;
 `;
 
-// Icon for the mobile menu, visible only on small screens
+/**
+ * Icon for toggling the mobile menu.
+ */
 const MobileMenuIcon = styled.div`
   display: none;
 
   @media (max-width: 770px) {
     color: var(--text-color);
     cursor: pointer;
-    display: block; // Visible on screens less than 770px
+    display: block;
     font-size: var(--hamburger-icon);
     margin-right: 10px;
     margin-top: -5px;
@@ -48,13 +53,17 @@ const MobileMenuIcon = styled.div`
   }
 `;
 
-// Wrapper for the left side of the navbar (logo, links, etc.)
+/**
+ * Wrapper for the left side of the navbar.
+ */
 const LeftWrapper = styled.div`
   align-items: center;
   display: flex;
 `;
 
-// Navbar content container, with mobile responsiveness
+/**
+ * Main navbar content, dynamically shown/hidden for mobile screens.
+ */
 const NavbarContent = styled.div`
   align-items: center;
   display: flex;
@@ -63,8 +72,7 @@ const NavbarContent = styled.div`
 
   @media (max-width: 770px) {
     background-color: #001f3f;
-    display: ${({ isOpen }) =>
-      isOpen ? "block" : "none"}; // Show/hide mobile menu
+    display: ${({ isOpen }) => (isOpen ? "block" : "none")};
     left: 0;
     padding: 20px;
     position: absolute;
@@ -74,53 +82,52 @@ const NavbarContent = styled.div`
   }
 `;
 
+/**
+ * Navbar component that includes the logo, dropdowns, and right actions.
+ * It supports mobile navigation and hides itself when scrolling down.
+ *
+ * @component
+ * @returns {JSX.Element} The navigation bar.
+ */
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false); // State to manage mobile menu visibility
-  const [isHidden, setIsHidden] = useState(false); // State to hide/show navbar on scroll
-  const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Toggle the mobile menu (open/close)
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  // Handle scroll to hide/show navbar based on scroll direction
   const handleScroll = () => {
     if (window.scrollY > lastScrollY) {
-      setIsHidden(true); // Hide navbar when scrolling down
+      setIsHidden(true);
     } else {
-      setIsHidden(false); // Show navbar when scrolling up
+      setIsHidden(false);
     }
-    setLastScrollY(window.scrollY); // Update last scroll position
+    setLastScrollY(window.scrollY);
   };
 
-  // Effect to add/remove scroll event listener
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll); // Cleanup scroll listener on unmount
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
 
   return (
     <Header isHidden={isHidden}>
-      {" "}
-      {/* Pass isHidden prop to control navbar visibility */}
       <NavbarContainer>
         <LeftWrapper>
-          <Logo /> {/* Display logo */}
+          <Logo />
         </LeftWrapper>
 
         <MobileMenuIcon onClick={toggleMenu}>
-          {menuOpen ? <FaTimes /> : <FaBars />}{" "}
-          {/* Toggle between open/close icons */}
+          {menuOpen ? <FaTimes /> : <FaBars />}
         </MobileMenuIcon>
 
         <NavbarContent isOpen={menuOpen}>
-          {" "}
-          {/* Conditionally render mobile menu */}
-          <LeftComponents /> {/* Left-side navbar content */}
-          <RightActions /> {/* Right-side navbar actions */}
+          <LeftComponents />
+          <RightActions />
         </NavbarContent>
       </NavbarContainer>
     </Header>

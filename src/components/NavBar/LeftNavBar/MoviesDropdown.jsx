@@ -1,7 +1,13 @@
-// MoviesDropdown.js
 import React from "react";
 import NavItemWithDropdown from "../NavItemWithDropdown";
 
+/**
+ * MoviesDropdown component displaying a dropdown menu for the "Movies" section.
+ * It provides links to different movie categories such as popular, now playing, upcoming, and top-rated.
+ *
+ * @component
+ * @returns {JSX.Element} A dropdown menu with links to movie categories.
+ */
 const MoviesDropdown = () => {
   return (
     <NavItemWithDropdown

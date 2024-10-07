@@ -1,6 +1,13 @@
 import styled from "@emotion/styled";
 
-// Wrapper to standrize the Three boxes (Sort - Where to Watch - Filters) so they all have the same styling
+/**
+ * BoxWrapper is a styled container to standardize the appearance of the three filter boxes
+ * (Sort, Where to Watch, and Filters). It applies consistent styling such as background,
+ * padding, shadow, and width.
+ *
+ * @component
+ * @returns {JSX.Element} The styled wrapper component.
+ */
 const BoxWrapper = styled.div`
   background: var(--text-color);
   border-radius: 10px;

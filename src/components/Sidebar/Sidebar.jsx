@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import SortBox from "./SortBox";
-import WhereToWatch from "./WhereToWatch/WhereToWatchBox";
-import FiltersBox from "./FiltersBox/FiltersBox";
+import WhereToWatch from "./WhereToWatchBox/WhereToWatch";
+import FiltersBox from "./FiltersBox/Filters";
 import SearchButton from "./SearchButton";
 
-// Styled container for the sidebar
+/**
+ * Styled container for the sidebar that holds filters, sorting, and the search button.
+ */
 const SidebarContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -21,37 +23,38 @@ const SidebarContainer = styled.div`
   }
 `;
 
-// Sidebar component containing sorting, filters, and search button
+/**
+ * Sidebar component that displays sorting options, filters, and a search button.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {Function} props.setSortBy - Callback function to update the sorting criteria.
+ * @param {Function} props.onSearch - Callback function triggered when the search button is clicked.
+ * @param {Function} props.onDateSelect - Callback function for selecting a date range.
+ * @returns {JSX.Element} The sidebar component.
+ */
 const Sidebar = ({ setSortBy, onSearch, onDateSelect }) => {
-  const [isSearchClickable, setIsSearchClickable] = useState(false); // Track if search is enabled
-  const [selectedGenres, setSelectedGenres] = useState([]); // Track selected genres
+  const [isSearchClickable, setIsSearchClickable] = useState(false);
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
-  // Handle search button click
   const handleSearchClick = () => {
     if (isSearchClickable) {
-      onSearch(selectedGenres); // Trigger search with selected genres
+      onSearch(selectedGenres);
     }
   };
 
   return (
     <SidebarContainer>
-      {/* Sorting options */}
       <SortBox setSortBy={setSortBy} />
-
-      {/* Where to watch component (streaming providers) */}
       <WhereToWatch />
-
-      {/* Filters box for genres and release dates */}
       <FiltersBox
-        onGenreSelect={setSelectedGenres} // Update selected genres
-        onDateSelect={onDateSelect} // Handle release date selection
-        setIsSearchClickable={setIsSearchClickable} // Enable search when filters are applied
+        onGenreSelect={setSelectedGenres}
+        onDateSelect={onDateSelect}
+        setIsSearchClickable={setIsSearchClickable}
       />
-
-      {/* Search button that triggers search only when clickable */}
       <SearchButton
-        isClickable={isSearchClickable} // Control button's clickable state
-        onClick={handleSearchClick} // Handle search button click
+        isClickable={isSearchClickable}
+        onClick={handleSearchClick}
       />
     </SidebarContainer>
   );

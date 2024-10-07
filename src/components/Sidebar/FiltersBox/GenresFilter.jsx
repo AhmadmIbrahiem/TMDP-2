@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 
-// Wrapper for genre buttons in a grid layout
+/**
+ * Styled wrapper for genres in a grid layout.
+ */
 const GenresWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr); // Two-column grid
-  gap: 3px; // Space between buttons
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
 `;
 
-// Styled genre button
+/**
+ * Styled genre button.
+ */
 const GenreButton = styled.button`
   background-color: var(--secondary-color);
   border-radius: 30px;
@@ -30,11 +34,17 @@ const GenreButton = styled.button`
   }
 `;
 
-// Component for filtering by genres
+/**
+ * GenresFilter component to display a list of genres for filtering.
+ *
+ * @component
+ * @param {Array<number>} props.selectedGenres - Array of selected genre IDs.
+ * @param {Function} props.toggleGenre - Function to handle genre selection/deselection.
+ * @returns {JSX.Element} The genres filter component.
+ */
 const GenresFilter = ({ selectedGenres, toggleGenre }) => {
-  const [genres, setGenres] = useState([]); // State to store genres
+  const [genres, setGenres] = useState([]);
 
-  // Fetch genres from TMDB API on component mount
   useEffect(() => {
     const fetchGenres = async () => {
       const apiKey = "a2e43792610eabefa63e1e91cde700d8";
@@ -42,7 +52,7 @@ const GenresFilter = ({ selectedGenres, toggleGenre }) => {
       try {
         const response = await fetch(url);
         const data = await response.json();
-        setGenres(data.genres); // Set fetched genres in state
+        setGenres(data.genres);
       } catch (error) {
         console.error("Error fetching genres:", error);
       }
@@ -58,8 +68,8 @@ const GenresFilter = ({ selectedGenres, toggleGenre }) => {
         {genres.map((genre) => (
           <GenreButton
             key={genre.id}
-            className={selectedGenres.includes(genre.id) ? "active" : ""} // Highlight selected genres
-            onClick={() => toggleGenre(genre.id)} // Toggle genre selection
+            className={selectedGenres.includes(genre.id) ? "active" : ""}
+            onClick={() => toggleGenre(genre.id)}
           >
             {genre.name}
           </GenreButton>

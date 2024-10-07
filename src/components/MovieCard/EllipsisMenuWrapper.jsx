@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 import EllipsisButton from "./EllipsisButton";
 import DropdownMenu from "./DropdownMenu";
 
-// Styled component to position the ellipsis menu using Emotion
+/**
+ * Styled component to position the ellipsis menu using Emotion.
+ */
 const EllipsisWrapper = styled.div`
   position: absolute;
   right: 10px;
@@ -11,17 +13,22 @@ const EllipsisWrapper = styled.div`
   z-index: 2;
 `;
 
+/**
+ * EllipsisMenuWrapper component that manages the display of a dropdown menu with an ellipsis button.
+ *
+ * @component
+ * @param {Function} props.toggleBlur - Function to toggle blur effect when the menu is opened.
+ * @returns {JSX.Element} The EllipsisMenuWrapper component.
+ */
 const EllipsisMenuWrapper = ({ toggleBlur }) => {
-  const [showMenu, setShowMenu] = useState(false); // Manages the visibility of the dropdown menu
-  const ellipsisRef = useRef(null); // Reference to track clicks outside the menu
+  const [showMenu, setShowMenu] = useState(false);
+  const ellipsisRef = useRef(null);
 
-  // Toggles the menu and blur effect when the ellipsis button is clicked
   const handleEllipsisClick = () => {
     setShowMenu(!showMenu);
     toggleBlur(!showMenu);
   };
 
-  // Adds an event listener to detect clicks outside the menu, closes the menu when clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (ellipsisRef.current && !ellipsisRef.current.contains(event.target)) {
@@ -29,19 +36,17 @@ const EllipsisMenuWrapper = ({ toggleBlur }) => {
         toggleBlur(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside); // Adds event listener when the component mounts
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside); // Removes event listener when the component unmounts
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ellipsisRef, toggleBlur]);
 
   return (
     <EllipsisWrapper ref={ellipsisRef}>
-      <EllipsisButton onClick={handleEllipsisClick} />{" "}
-      {/* Ellipsis button to toggle the menu */}
-      <DropdownMenu showMenu={showMenu} />{" "}
-      {/* Renders the dropdown menu if `showMenu` is true */}
+      <EllipsisButton onClick={handleEllipsisClick} />
+      <DropdownMenu showMenu={showMenu} />
     </EllipsisWrapper>
   );
 };

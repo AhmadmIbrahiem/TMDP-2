@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+/**
+ * Styled wrapper for the tooltip component.
+ */
 const TooltipWrapper = styled.div`
   position: absolute;
   top: 110%;
@@ -28,6 +31,13 @@ const TooltipWrapper = styled.div`
   }
 `;
 
+/**
+ * Tooltip component to display a message in a styled tooltip.
+ *
+ * @component
+ * @param {string} props.message - The message to display inside the tooltip.
+ * @returns {JSX.Element} A tooltip component that displays a message.
+ */
 const Tooltip = ({ message }) => {
   return <TooltipWrapper>{message}</TooltipWrapper>;
 };

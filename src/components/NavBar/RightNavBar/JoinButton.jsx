@@ -1,7 +1,9 @@
-// JoinButton.js
 import React from "react";
 import styled from "@emotion/styled";
 
+/**
+ * Styled button for joining TMDB.
+ */
 const Button = styled.button`
   background-color: transparent;
   border: none;
@@ -14,6 +16,12 @@ const Button = styled.button`
   }
 `;
 
+/**
+ * JoinButton component that renders a "Join TMDB" button.
+ *
+ * @component
+ * @returns {JSX.Element} A button element for joining TMDB.
+ */
 const JoinButton = () => {
   return <Button>Join TMDB</Button>;
 };

@@ -2,6 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 import { FaEllipsisH } from "react-icons/fa";
 
+/**
+ * Button wrapper for the ellipsis button using Emotion.
+ */
 const EllipsisButtonWrapper = styled.button`
   background: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
@@ -26,6 +29,13 @@ const EllipsisButtonWrapper = styled.button`
   }
 `;
 
+/**
+ * EllipsisButton component rendering an ellipsis icon button.
+ *
+ * @component
+ * @param {Function} props.onClick - Callback function triggered on button click.
+ * @returns {JSX.Element} The EllipsisButton component.
+ */
 const EllipsisButton = ({ onClick }) => {
   return (
     <EllipsisButtonWrapper onClick={onClick}>

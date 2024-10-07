@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 import JoinSection from "./JoinSection";
 import FooterColumn from "./FooterColumn";
 
-// Wrapper for footer navigation
+/**
+ * Wrapper for the footer navigation section, containing multiple columns.
+ */
 const FooterNavWrapper = styled.nav`
   display: flex;
   flex-wrap: wrap;
@@ -17,6 +19,11 @@ const FooterNavWrapper = styled.nav`
   }
 `;
 
+/**
+ * Navigation section of the footer containing multiple columns and the join section.
+ *
+ * @returns {JSX.Element} JSX for the footer navigation.
+ */
 const FooterNav = () => {
   return (
     <FooterNavWrapper>

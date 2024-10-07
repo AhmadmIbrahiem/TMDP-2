@@ -2,37 +2,56 @@ import React, { useState, useRef } from "react";
 import styled from "@emotion/styled";
 import DateInput from "./DataInput";
 
-// Container for the release dates filter
+/**
+ * Container for the release dates filter section.
+ */
 const Container = styled.div`
   margin-bottom: 20px;
 `;
 
-// Component to select release date range
+/**
+ * Helper function to format the date to "YYYY-MM-DD".
+ * @param {Date} date - The date to format.
+ * @returns {string} The formatted date string.
+ */
+const formatDate = (date) => {
+  if (!date) return null;
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+
+/**
+ * ReleaseDatesFilter component to allow users to select a range of release dates.
+ *
+ * @component
+ * @param {Function} props.onDateChange - Function to handle changes in the date range.
+ * @returns {JSX.Element} The release dates filter component.
+ */
 const ReleaseDatesFilter = ({ onDateChange }) => {
-  const [fromDate, setFromDate] = useState(null); // State for "From" date
-  const [toDate, setToDate] = useState(null); // State for "To" date
+  const [fromDate, setFromDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
 
-  const fromDateInputRef = useRef(null); // Reference for "From" date input
-  const toDateInputRef = useRef(null); // Reference for "To" date input
+  const fromDateInputRef = useRef(null);
+  const toDateInputRef = useRef(null);
 
-  // Handle change in "From" date
   const handleFromDateChange = (date) => {
     setFromDate(date);
-    onDateChange(date, toDate); // Notify parent of date change
+    // Format dates to "YYYY-MM-DD" before passing to onDateChange
+    onDateChange(formatDate(date), formatDate(toDate));
   };
 
-  // Handle change in "To" date
   const handleToDateChange = (date) => {
     setToDate(date);
-    onDateChange(fromDate, date); // Notify parent of date change
+    // Format dates to "YYYY-MM-DD" before passing to onDateChange
+    onDateChange(formatDate(fromDate), formatDate(date));
   };
 
-  // Trigger date picker for "From" date
   const triggerFromDatePicker = () => {
     fromDateInputRef.current.setFocus();
   };
 
-  // Trigger date picker for "To" date
   const triggerToDatePicker = () => {
     toDateInputRef.current.setFocus();
   };
@@ -40,7 +59,6 @@ const ReleaseDatesFilter = ({ onDateChange }) => {
   return (
     <Container>
       <h4>Release Dates</h4>
-      {/* Date input for "From" date */}
       <DateInput
         label="From"
         selectedDate={fromDate}
@@ -48,7 +66,6 @@ const ReleaseDatesFilter = ({ onDateChange }) => {
         inputRef={fromDateInputRef}
         triggerDatePicker={triggerFromDatePicker}
       />
-      {/* Date input for "To" date */}
       <DateInput
         label="To"
         selectedDate={toDate}

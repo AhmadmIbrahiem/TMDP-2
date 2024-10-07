@@ -57,6 +57,8 @@ const WhereToWatchBox = ({ setIsSearchClickable }) => {
         ? prevSelected.filter((id) => id !== providerId)
         : [...prevSelected, providerId]
     );
+    /* 
+    When I press the where to watch I get this kind of erros  */
 
     setIsSearchClickable(
       selectedProviders.length > 0 || !selectedProviders.includes(providerId)

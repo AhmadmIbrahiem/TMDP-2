@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import Navbar from "./components/NavBar/NavBar";
-import MovieList from "./components/MovieList/MovieList";
+import MovieList from "./components/MovieList/MovieFetch";
 import Sidebar from "./components/Sidebar/Sidebar";
 import styled from "@emotion/styled";
 import Footer from "./components/Footer/FooterWrapper";
 import "./components/CSS/App.css"; // Global CSS for the app
 
-// Wrapper for the entire app, applies global font style
+/**
+ * Wrapper for the entire app, applying a global font style.
+ */
 const AppWrapper = styled.div`
   font-family: "Arial", sans-serif;
 `;
 
-// Container for the main content (sidebar and movie list)
+/**
+ * Container for the main content (sidebar and movie list), with responsive behavior.
+ */
 const Container = styled.div`
   display: flex;
   gap: 30px;
@@ -26,6 +30,13 @@ const Container = styled.div`
   }
 `;
 
+/**
+ * App component that serves as the root of the application.
+ * It manages the global state for sorting, filtering by genres, and release dates.
+ *
+ * @component
+ * @returns {JSX.Element} The main app component with Navbar, Sidebar, MovieList, and Footer.
+ */
 function App() {
   // State to manage the sorting option
   const [sortBy, setSortBy] = useState("popularity.desc");
@@ -36,12 +47,21 @@ function App() {
   // State to manage release date filters
   const [releaseDates, setReleaseDates] = useState({ from: "", to: "" });
 
-  // Handler function for search, updates selected genres
+  /**
+   * Handler function for searching movies by selected genres.
+   *
+   * @param {Array<number>} genres - The selected genre IDs.
+   */
   const handleSearch = (genres) => {
     setSelectedGenres(genres);
   };
 
-  // Handler function for date selection, updates release dates
+  /**
+   * Handler function for selecting a date range for filtering movies.
+   *
+   * @param {string} from - The start date for the release date filter.
+   * @param {string} to - The end date for the release date filter.
+   */
   const handleDateSelect = (from, to) => {
     setReleaseDates({ from, to });
   };

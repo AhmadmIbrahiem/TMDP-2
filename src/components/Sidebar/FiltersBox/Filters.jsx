@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 import GenresFilter from "./GenresFilter";
 import ReleaseDatesFilter from "./ReleaseDatesFilter";
 import BoxWrapper from "../BoxWrapper";
+import { FaChevronRight, FaChevronDown } from "react-icons/fa";
 
-// Styled component for filter content
+/**
+ * Styled wrapper for filter content.
+ */
 const FilterContent = styled.div`
   background: var(--text-color);
   border-radius: 10px;
@@ -13,7 +15,9 @@ const FilterContent = styled.div`
   transition: all 0.3s ease;
 `;
 
-// Styled heading for filter section
+/**
+ * Styled heading for the filter section.
+ */
 const Heading = styled.h3`
   align-items: center;
   cursor: pointer;
@@ -23,16 +27,22 @@ const Heading = styled.h3`
   justify-content: space-between;
 `;
 
-// Main filter component
+/**
+ * FiltersBox component to display filters for selecting genres and release dates.
+ *
+ * @component
+ * @param {Function} props.onGenreSelect - Function to handle genre selection.
+ * @param {Function} props.onDateSelect - Function to handle release date selection.
+ * @param {Function} props.setIsSearchClickable - Function to set the search button's clickable state.
+ * @returns {JSX.Element} The filter box with genre and date filters.
+ */
 const FiltersBox = ({ onGenreSelect, onDateSelect, setIsSearchClickable }) => {
-  const [isOpen, setIsOpen] = useState(false); // Track if filters are open/closed
-  const [selectedGenres, setSelectedGenres] = useState([]); // Track selected genres
-  const [releaseDates, setReleaseDates] = useState({ from: "", to: "" }); // Track selected release dates
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [releaseDates, setReleaseDates] = useState({ from: "", to: "" });
 
-  // Toggle filter visibility
   const toggleFilters = () => setIsOpen(!isOpen);
 
-  // Handle genre selection/deselection
   const toggleGenre = (genre) => {
     const updatedGenres = selectedGenres.includes(genre)
       ? selectedGenres.filter((g) => g !== genre)
@@ -42,30 +52,24 @@ const FiltersBox = ({ onGenreSelect, onDateSelect, setIsSearchClickable }) => {
     setIsSearchClickable(
       updatedGenres.length > 0 || releaseDates.from || releaseDates.to
     );
-    onGenreSelect(updatedGenres); // Notify parent of genre selection
+    onGenreSelect(updatedGenres);
   };
 
-  // Handle release date changes
   const handleDateChange = (from, to) => {
     setReleaseDates({ from, to });
     setIsSearchClickable(from || to || selectedGenres.length > 0);
-    onDateSelect(from, to); // Notify parent of date selection
+    onDateSelect(from, to);
   };
 
   return (
     <BoxWrapper isOpen={isOpen}>
-      {" "}
-      {/* Toggle box visibility */}
       <Heading onClick={toggleFilters}>
         <span>Filters</span>
-        {isOpen ? <FaChevronDown /> : <FaChevronRight />} {/* Toggle icon */}
+        {isOpen ? <FaChevronDown /> : <FaChevronRight />}
       </Heading>
       {isOpen && (
         <FilterContent>
-          {/* Release Dates */}
           <ReleaseDatesFilter onDateChange={handleDateChange} />
-
-          {/* Genres */}
           <GenresFilter
             selectedGenres={selectedGenres}
             toggleGenre={toggleGenre}

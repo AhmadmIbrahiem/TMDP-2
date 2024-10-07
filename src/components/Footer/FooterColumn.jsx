@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-// Wrapper for each footer column
+/**
+ * Wrapper for each footer column section.
+ */
 const ColumnWrapper = styled.div`
   margin-bottom: 20px;
 
@@ -30,6 +32,15 @@ const ColumnWrapper = styled.div`
   }
 `;
 
+/**
+ * Footer column displaying a list of links.
+ *
+ * @component
+ * @param {Object} props - React props.
+ * @param {string} props.title - Title of the column.
+ * @param {Array<{label: string, href: string}>} props.links - Array of link objects containing label and href.
+ * @returns {JSX.Element} JSX for the footer column.
+ */
 const FooterColumn = ({ title, links }) => (
   <ColumnWrapper>
     <h3>{title}</h3>

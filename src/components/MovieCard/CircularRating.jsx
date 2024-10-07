@@ -3,7 +3,9 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import styled from "@emotion/styled";
 import "react-circular-progressbar/dist/styles.css";
 
-// Circular rating component using Emotion
+/**
+ * Wrapper for the circular rating component using Emotion.
+ */
 const RatingWrapper = styled.div`
   background-color: #081c22;
   border-radius: 50%;
@@ -17,6 +19,14 @@ const RatingWrapper = styled.div`
   z-index: 1;
 `;
 
+/**
+ * CircularRating component displaying a percentage rating inside a circular progress bar.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {number} props.rating - Rating value for the circular progress bar (0-100).
+ * @returns {JSX.Element} The CircularRating component.
+ */
 const CircularRating = ({ rating }) => {
   const ratingColor = rating >= 70 ? "#21d07a" : "#d2d531";
 

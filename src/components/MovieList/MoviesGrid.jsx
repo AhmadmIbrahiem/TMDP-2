@@ -2,7 +2,9 @@ import React from "react";
 import styled from "@emotion/styled";
 import MovieCard from "../MovieCard/MovieCard";
 
-// Controlling the grid of the movies apppearing at each row depending on the screen size
+/**
+ * Styled grid layout for displaying movies.
+ */
 const Grid = styled.div`
   display: grid;
   gap: 20px;
@@ -22,6 +24,14 @@ const Grid = styled.div`
   }
 `;
 
+/**
+ * MoviesGrid component to display a grid of movies.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {Array<Object>} props.movies - Array of movie objects to display.
+ * @returns {JSX.Element} Grid component displaying MovieCards.
+ */
 const MoviesGrid = ({ movies }) => {
   return (
     <Grid>

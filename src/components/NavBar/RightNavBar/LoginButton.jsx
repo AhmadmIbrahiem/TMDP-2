@@ -1,7 +1,9 @@
-// LoginButton.js
 import React from "react";
 import styled from "@emotion/styled";
 
+/**
+ * Styled button for the login action.
+ */
 const Button = styled.button`
   background-color: transparent;
   border: none;
@@ -14,6 +16,12 @@ const Button = styled.button`
   }
 `;
 
+/**
+ * LoginButton component that renders a "Login" button.
+ *
+ * @component
+ * @returns {JSX.Element} A button element for logging in.
+ */
 const LoginButton = () => {
   return <Button>Login</Button>;
 };

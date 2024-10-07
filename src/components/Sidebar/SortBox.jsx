@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { FaChevronDown, FaChevronRight } from "react-icons/fa"; // Icons for dropdown toggle
+import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 import BoxWrapper from "./BoxWrapper";
 
-// Styled dropdown component for sorting options
+/**
+ * Styled dropdown for sorting options.
+ */
 const Dropdown = styled.select`
   font-size: var(--footer-font-size);
   margin-top: 10px;
@@ -11,40 +13,41 @@ const Dropdown = styled.select`
   width: 100%;
 `;
 
-// Header component for the sort box (displays the title and toggle icon)
+/**
+ * Styled header that contains the title and the dropdown toggle icon.
+ */
 const Header = styled.div`
   align-items: center;
   display: flex;
   justify-content: space-between;
 `;
 
-// SortBox component
+/**
+ * SortBox component that displays a dropdown for sorting options and allows users to select a sorting criterion.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {Function} props.setSortBy - Callback function to update the sorting criteria.
+ * @returns {JSX.Element} The sort box component.
+ */
 const SortBox = ({ setSortBy }) => {
-  const [open, setOpen] = useState(false); // State to track whether the dropdown is open or closed
+  const [open, setOpen] = useState(false);
 
-  // Toggle the dropdown visibility
   const toggleDropdown = () => setOpen(!open);
 
-  // Handle sorting option change
   const handleChange = (event) => {
-    setSortBy(event.target.value); // Update the sorting criteria
+    setSortBy(event.target.value);
   };
 
   return (
     <BoxWrapper isOpen={open}>
-      {" "}
-      {/* Wrapping the box content */}
       <Header onClick={toggleDropdown}>
-        {" "}
-        {/* Toggle dropdown on click */}
         <h3>Sort</h3>
-        {open ? <FaChevronDown /> : <FaChevronRight />}{" "}
-        {/* Show appropriate icon based on open state */}
+        {open ? <FaChevronDown /> : <FaChevronRight />}
       </Header>
-      {open /* Show dropdown only when open */ && (
+      {open && (
         <div>
           <h4>Sort Results By</h4>
-          {/* Dropdown for sorting options */}
           <Dropdown onChange={handleChange} defaultValue="popularity.desc">
             <option value="popularity.desc">Popularity Descending</option>
             <option value="popularity.asc">Popularity Ascending</option>

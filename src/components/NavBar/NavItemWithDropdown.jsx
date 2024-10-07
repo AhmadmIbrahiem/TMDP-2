@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 
+/**
+ * Styled list item for the navigation dropdown.
+ */
 const NavItem = styled.li`
   list-style: none;
   position: relative;
 `;
 
+/**
+ * Styled anchor tag for navigation links.
+ */
 const NavLink = styled.a`
   color: var(--text-color);
   cursor: pointer;
@@ -15,6 +21,9 @@ const NavLink = styled.a`
   text-decoration: none;
 `;
 
+/**
+ * Styled dropdown menu for navigation items.
+ */
 const DropdownMenu = styled.ul`
   background-color: var(--text-color);
   border-radius: 4px;
@@ -49,6 +58,15 @@ const DropdownMenu = styled.ul`
   }
 `;
 
+/**
+ * NavItemWithDropdown component renders a navigation item that shows a dropdown on hover.
+ *
+ * @component
+ * @param {Object} props - Component props.
+ * @param {string} props.title - The title of the navigation item.
+ * @param {Array<Object>} props.links - The links to be displayed in the dropdown.
+ * @returns {JSX.Element} The navigation item with a dropdown.
+ */
 const NavItemWithDropdown = ({ title, links }) => {
   const [isOpen, setIsOpen] = useState(false);
   let timeoutId = null;

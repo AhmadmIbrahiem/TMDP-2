@@ -1,23 +1,7 @@
 import React from "react";
-import styled from "@emotion/styled";
+import { FooterNavWrapper } from "./FooterNav.styles";
 import JoinSection from "./JoinSection";
 import FooterColumn from "./FooterColumn";
-
-/**
- * Wrapper for the footer navigation section, containing multiple columns.
- */
-const FooterNavWrapper = styled.nav`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 0 auto;
-  max-width: 1200px;
-
-  @media (max-width: 900px) {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-`;
 
 /**
  * Navigation section of the footer containing multiple columns and the join section.

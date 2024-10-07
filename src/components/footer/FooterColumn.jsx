@@ -1,44 +1,14 @@
 import React from "react";
-import styled from "@emotion/styled";
-
-/**
- * Wrapper for each footer column section.
- */
-const ColumnWrapper = styled.div`
-  margin-bottom: 20px;
-
-  h3 {
-    font-size: var(--font-size);
-    font-weight: var(--font-weight);
-    margin-bottom: 15px;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-
-    li {
-      margin-bottom: 10px;
-
-      a {
-        color: var(--text-color);
-        text-decoration: none;
-
-        &:hover {
-          color: var(--accent-color);
-        }
-      }
-    }
-  }
-`;
+import { ColumnWrapper } from "./FooterColumn.styles";
 
 /**
  * Footer column displaying a list of links.
  *
- * @component
- * @param {Object} props - React props.
- * @param {string} props.title - Title of the column.
- * @param {Array<{label: string, href: string}>} props.links - Array of link objects containing label and href.
+ *
+ * @param   {Object}                               props - React props.
+ * @param   {string}                               props.title - Title of the column.
+ * @param   {Array<{label: string, href: string}>} props.links - Array of link objects containing label and href.
+ *
  * @returns {JSX.Element} JSX for the footer column.
  */
 const FooterColumn = ({ title, links }) => (

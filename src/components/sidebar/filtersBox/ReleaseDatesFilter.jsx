@@ -1,17 +1,11 @@
 import React, { useState, useRef } from "react";
-import styled from "@emotion/styled";
+import { Container } from "./ReleaseDatesFilter.styles";
 import DateInput from "./DataInput";
-
-/**
- * Container for the release dates filter section.
- */
-const Container = styled.div`
-  margin-bottom: 20px;
-`;
 
 /**
  * Helper function to format the date to "YYYY-MM-DD".
  * @param {Date} date - The date to format.
+ *
  * @returns {string} The formatted date string.
  */
 const formatDate = (date) => {
@@ -38,13 +32,13 @@ const ReleaseDatesFilter = ({ onDateChange }) => {
 
   const handleFromDateChange = (date) => {
     setFromDate(date);
-    // Format dates to "YYYY-MM-DD" before passing to onDateChange
+
     onDateChange(formatDate(date), formatDate(toDate));
   };
 
   const handleToDateChange = (date) => {
     setToDate(date);
-    // Format dates to "YYYY-MM-DD" before passing to onDateChange
+
     onDateChange(formatDate(fromDate), formatDate(date));
   };
 

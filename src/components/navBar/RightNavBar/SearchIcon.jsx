@@ -1,26 +1,5 @@
 import React, { useState } from "react";
-import { FaSearch } from "react-icons/fa";
-import styled from "@emotion/styled";
-
-/**
- * Styled icon for the search action.
- */
-const StyledSearchIcon = styled(FaSearch)`
-  cursor: pointer;
-  color: #76c7c0;
-  font-size: 1.2rem;
-`;
-
-/**
- * Styled input field for search queries, which is toggled by the search icon.
- */
-const SearchInput = styled.input`
-  padding: 5px;
-  margin-left: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  display: ${(props) => (props.visible ? "inline-block" : "none")};
-`;
+import { StyledSearchIcon, SearchInput } from "./SearchIcon.styles";
 
 /**
  * SearchIcon component that shows a search input when clicked, allowing the user to input and submit a search query.
@@ -43,7 +22,7 @@ const SearchIcon = ({ onSearch }) => {
 
   const handleSearchSubmit = (e) => {
     if (e.key === "Enter" && searchQuery.trim()) {
-      onSearch(searchQuery); // Pass the query to the parent component
+      onSearch(searchQuery);
     }
   };
 

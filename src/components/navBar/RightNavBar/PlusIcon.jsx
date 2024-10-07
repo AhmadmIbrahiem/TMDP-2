@@ -1,16 +1,6 @@
 import React, { useState } from "react";
-import { FaPlus } from "react-icons/fa";
-import styled from "@emotion/styled";
-import Tooltip from "./Tooltip"; // Assuming Tooltip is in a parent folder
-
-/**
- * Styled icon for the plus symbol.
- */
-const StyledPlusIcon = styled(FaPlus)`
-  cursor: pointer;
-  color: white;
-  font-size: 1.2rem;
-`;
+import { StyledPlusIcon } from "./PlusIcon.styles";
+import Tooltip from "./Tooltip";
 
 /**
  * PlusIcon component that toggles a tooltip when clicked.

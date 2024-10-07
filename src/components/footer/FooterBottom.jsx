@@ -1,17 +1,5 @@
 import React from "react";
-import styled from "@emotion/styled";
-
-/**
- * Bottom section of the footer displaying the build version.
- *
- * @component
- */
-const BottomWrapper = styled.section`
-  color: var(--text-color);
-  font-size: var(--footer-font-size);
-  margin-top: 40px;
-  text-align: center;
-`;
+import { BottomWrapper } from "./FooterBottom.styles";
 
 /**
  * Footer bottom component showing build information.

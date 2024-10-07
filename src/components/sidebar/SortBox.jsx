@@ -1,33 +1,15 @@
 import React, { useState } from "react";
-import styled from "@emotion/styled";
+import { Dropdown, Header } from "./SortBox.styles";
 import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 import BoxWrapper from "./BoxWrapper";
 
 /**
- * Styled dropdown for sorting options.
- */
-const Dropdown = styled.select`
-  font-size: var(--footer-font-size);
-  margin-top: 10px;
-  padding: 8px;
-  width: 100%;
-`;
-
-/**
- * Styled header that contains the title and the dropdown toggle icon.
- */
-const Header = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-`;
-
-/**
  * SortBox component that displays a dropdown for sorting options and allows users to select a sorting criterion.
  *
- * @component
- * @param {Object} props - Component props.
- * @param {Function} props.setSortBy - Callback function to update the sorting criteria.
+ *
+ * @param   {Object}   props - Component props.
+ * @param   {Function} props.setSortBy - Callback function to update the sorting criteria.
+ *
  * @returns {JSX.Element} The sort box component.
  */
 const SortBox = ({ setSortBy }) => {

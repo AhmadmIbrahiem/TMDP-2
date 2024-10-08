@@ -12,14 +12,16 @@ export const AppWrapper = styled.div`
  */
 export const Container = styled.div`
   display: flex;
-  gap: 30px;
+  gap: 1.875rem;
   margin: 0 auto;
+  /* Whenever I convert the max width to rem the interface is merged to the top left */
   max-width: 1500px;
-  padding-top: 100px;
-  padding: 20px 30px;
+  padding-top: 6.25rem;
+  padding: 1.25rem 1.875rem;
+  margin-top: 3.125rem;
 
   @media (max-width: 770px) {
     flex-direction: column;
-    padding: 20px 15px;
+    padding: 1.25rem 0.9375rem;
   }
 `;

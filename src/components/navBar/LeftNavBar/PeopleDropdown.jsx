@@ -1,11 +1,9 @@
 import React from "react";
-import NavItemWithDropdown from "../NavItemWithDropdown";
+import NavItemWithDropdown from "../navItemWithDropDown/NavItemWithDropdown";
 
 /**
  * PeopleDropdown component displaying a dropdown menu for the "People" section.
- * It provides a link to the popular people page.
  *
- * @component
  * @returns {JSX.Element} A dropdown menu with a link to the popular people page.
  */
 const PeopleDropdown = () => {

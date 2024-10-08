@@ -1,15 +1,23 @@
 import styled from "@emotion/styled";
 
 /**
+ * Styled image component for the logo.
+ */
+export const LogoImage = styled.img`
+  height: 2rem;
+  width: 7rem;
+`;
+
+/**
  * Styled header component with dynamic visibility based on scroll.
  */
 export const Header = styled.header`
   align-items: center;
   background-color: var(--bg-color);
-  border-bottom: 2px solid #ccc;
+  border-bottom: 0.125rem solid #ccc;
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   position: fixed;
   top: ${({ isHidden }) => (isHidden ? "-80px" : "0")};
   transition: top 0.3s;
@@ -40,11 +48,11 @@ export const MobileMenuIcon = styled.div`
     cursor: pointer;
     display: block;
     font-size: var(--hamburger-icon);
-    margin-right: 10px;
-    margin-top: -5px;
+    margin-right: 0.625rem;
+    margin-top: -0.3125rem;
     position: absolute;
-    right: 40px;
-    top: 15px;
+    right: 2.5rem;
+    top: 0.9375rem;
   }
 `;
 
@@ -71,7 +79,7 @@ export const NavbarContent = styled.div`
     left: 0;
     padding: 20px;
     position: absolute;
-    top: 60px;
+    top: 3.75rem;
     width: 100%;
     z-index: 1000;
   }

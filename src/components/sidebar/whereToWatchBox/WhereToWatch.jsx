@@ -4,7 +4,7 @@ import { FaChevronDown, FaChevronRight } from "react-icons/fa";
 import CountryDropdown from "./CountryDropdown";
 import MyServices from "./MyServices";
 import ProvidersGrid from "./ProvidersGrid";
-import BoxWrapper from "../BoxWrapper";
+import { BoxWrapper } from "../BoxWrapper.styles";
 
 const Heading = styled.h3`
   align-items: center;

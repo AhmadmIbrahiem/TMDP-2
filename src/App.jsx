@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import Navbar from "./components/navBar/NavBar";
-import MovieList from "./components/movieList/MovieFetch";
-import Sidebar from "./components/sidebar/Sidebar";
-import Footer from "./components/footer/FooterWrapper";
+import MovieList from "./components/movieList/movieFetch/MovieFetch";
+import Sidebar from "./components/sidebar/sideBoxes/Sidebar";
+import Footer from "./components/footer/Footer";
 import { AppWrapper, Container } from "./App.styles";
 import "./global.css";
 
 /**
- * App component that serves as the root of the application.
- * It manages the global state for sorting, filtering by genres, and release dates.
- *
+ * App component that serves as the root of the application. It manages the global state for sorting, filtering by genres, and release dates.
  *
  * @returns {JSX.Element} The main app component with Navbar, Sidebar, MovieList, and Footer.
  */

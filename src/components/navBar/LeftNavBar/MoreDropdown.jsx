@@ -1,11 +1,9 @@
 import React from "react";
-import NavItemWithDropdown from "../NavItemWithDropdown";
+import NavItemWithDropdown from "../navItemWithDropDown/NavItemWithDropdown";
 
 /**
  * MoreDropdown component displaying a dropdown menu for the "More" section.
- * It provides links to discussions, leaderboard, support, and API pages.
  *
- * @component
  * @returns {JSX.Element} A dropdown menu with links for additional resources.
  */
 const MoreDropdown = () => {

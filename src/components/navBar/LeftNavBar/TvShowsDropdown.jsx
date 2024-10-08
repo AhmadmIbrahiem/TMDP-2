@@ -1,11 +1,9 @@
 import React from "react";
-import NavItemWithDropdown from "../NavItemWithDropdown";
+import NavItemWithDropdown from "../navItemWithDropDown/NavItemWithDropdown";
 
 /**
  * TvShowsDropdown component displaying a dropdown menu for the "TV Shows" section.
- * It provides links to TV show categories such as popular, airing today, on TV, and top-rated.
  *
- * @component
  * @returns {JSX.Element} A dropdown menu with links to TV show categories.
  */
 const TvShowsDropdown = () => {

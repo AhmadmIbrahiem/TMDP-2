@@ -5,16 +5,24 @@ import {
   MobileMenuIcon,
   LeftWrapper,
   NavbarContent,
+  LogoImage,
 } from "./NavBar.styles";
-import LeftComponents from "./LeftComponents";
-import RightActions from "./RightActions";
-import Logo from "./Logo";
 import { FaBars, FaTimes } from "react-icons/fa";
+import logo from "../assets/Logo.svg";
+import LeftComponents from "./leftComponents/LeftComponents";
+import RightActions from "./rightComponents/RightActions";
 
 /**
- * Navbar component that includes the logo, dropdowns, and right actions.
- * It supports mobile navigation and hides itself when scrolling down.
+ * Logo component that displays the site's logo.
  *
+ * @returns {JSX.Element} The logo element.
+ */
+const Logo = () => {
+  return <LogoImage src={logo} alt="Logo" />;
+};
+
+/**
+ * Navbar component that includes the logo, dropdowns, and right actions.  It supports mobile navigation and hides itself when scrolling down.
  *
  * @returns {JSX.Element} The navigation bar.
  */

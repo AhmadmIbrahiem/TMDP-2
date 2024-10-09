@@ -1,13 +1,18 @@
+// src/App.jsx
 import React, { useState } from "react";
-import Navbar from "./components/navBar/NavBar";
-import MovieList from "./components/movieList/movieFetch/MovieFetch";
-import Sidebar from "./components/sidebar/sideBoxes/Sidebar";
-import Footer from "./components/footer/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./moviesPage/components/navBar/NavBar";
+import Home from "./homePage/Home"; // Import the Home page
+import MovieList from "./moviesPage/components/movieList/movieFetch/MovieFetch";
+import Sidebar from "./moviesPage/components/sidebar/sideBoxes/Sidebar";
+import Footer from "./moviesPage/components/footer/Footer";
+import NotFound from "./404Page/notFound/NotFound";
 import { AppWrapper, Container } from "./App.styles";
 import "./global.css";
 
 /**
- * App component that serves as the root of the application. It manages the global state for sorting, filtering by genres, and release dates.
+ * App component that serves as the root of the application.
+ * It manages the global state for sorting, filtering by genres, and release dates.
  *
  * @returns {JSX.Element} The main app component with Navbar, Sidebar, MovieList, and Footer.
  */
@@ -29,27 +34,40 @@ function App() {
   };
 
   return (
-    <AppWrapper>
-      {/* Navbar at the top */}
-      <Navbar />
+    <Router>
+      <AppWrapper>
+        <Navbar />
 
-      {/* Main container with Sidebar and MovieList */}
-      <Container>
-        <Sidebar
-          setSortBy={handleSort}
-          onSearch={handleSearch}
-          onDateSelect={handleDateSelect}
-        />
-        <MovieList
-          sortBy={sortBy}
-          selectedGenres={selectedGenres}
-          releaseDates={releaseDates}
-        />
-      </Container>
+        <Routes>
+          {/* Route for Home page */}
+          <Route path="/home" element={<Home />} />
 
-      {/* Footer at the bottom */}
-      <Footer />
-    </AppWrapper>
+          {/* Route for the movies page */}
+          <Route
+            path="/movies"
+            element={
+              <Container>
+                <Sidebar
+                  setSortBy={handleSort}
+                  onSearch={handleSearch}
+                  onDateSelect={handleDateSelect}
+                />
+                <MovieList
+                  sortBy={sortBy}
+                  selectedGenres={selectedGenres}
+                  releaseDates={releaseDates}
+                />
+              </Container>
+            }
+          />
+
+          {/* Fallback route for any undefined path */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+
+        <Footer />
+      </AppWrapper>
+    </Router>
   );
 }
 

@@ -7,7 +7,7 @@ import {
   JoinWrapper,
   LogoImage,
 } from "./Footer.styles";
-import logo from "../assets/Logo2.svg";
+import logo from "../../../assets/Logo2.svg";
 
 /**
  * Join Section component rendering a "Join the Community" section with a logo and link.

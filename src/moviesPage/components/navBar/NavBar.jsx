@@ -1,4 +1,6 @@
+// src/moviesPage/components/navBar/Navbar.jsx
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   Header,
   NavbarContainer,
@@ -8,21 +10,25 @@ import {
   LogoImage,
 } from "./NavBar.styles";
 import { FaBars, FaTimes } from "react-icons/fa";
-import logo from "../assets/Logo.svg";
+import logo from "../../../assets/Logo.svg";
 import LeftComponents from "./leftComponents/LeftComponents";
 import RightActions from "./rightComponents/RightActions";
-
 /**
- * Logo component that displays the site's logo.
+ * Logo component that displays the site's logo and navigates to the Home page.
  *
  * @returns {JSX.Element} The logo element.
  */
 const Logo = () => {
-  return <LogoImage src={logo} alt="Logo" />;
+  return (
+    <Link to="/Home">
+      <LogoImage src={logo} alt="Logo" />
+    </Link>
+  );
 };
 
 /**
- * Navbar component that includes the logo, dropdowns, and right actions.  It supports mobile navigation and hides itself when scrolling down.
+ * Navbar component that includes the logo, dropdowns, and right actions.
+ * It supports mobile navigation and hides itself when scrolling down.
  *
  * @returns {JSX.Element} The navigation bar.
  */

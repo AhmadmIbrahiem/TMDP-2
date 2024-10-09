@@ -1,4 +1,3 @@
-// src/pages/Home.js
 import React from "react";
 import logo from "../assets/Logo.svg";
 import { HomeWrapper, LogoImage, WelcomeText } from "./Home.styles";
